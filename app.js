@@ -41,19 +41,39 @@ con.connect(function(err) {
   console.log("Connected!");
 });
 
-app.get('/', function(req,res) {
-	con.query("SELECT * FROM reviews.eatingReviews", function(err, rows) {
-		eatReviews = rows;
-		review = eatReviews[0].Review;
-		console.log(review)
+app.get('/', function(req, res) {
+	var sql = "SELECT COUNT(*) as total FROM reviews.eatingReviews";
+	con.query(sql, function(err, result){
 		if (err) throw err;
-		res.render('test',
-		{review: review});
+		eatTotalReviews = result[0].total;
+		var sql2 = "SELECT COUNT(*) as total2 FROM reviews.guideReviews"
+		con.query(sql2, function(err, result){
+			if (err) throw err;
+			guideTotalReviews = result[0].total2;
+			res.render('guides',
+			{eatTotalReviews: eatTotalReviews,
+				guideTotalReviews:guideTotalReviews});
+		});
 	});
-	
 });
 
-app.get('/guides', function(req, res) {
+app.get('/', function(req, res) {
+	var sql = "SELECT COUNT(*) as total FROM reviews.eatingReviews";
+	con.query(sql, function(err, result){
+		if (err) throw err;
+		eatTotalReviews = result[0].total;
+		var sql2 = "SELECT COUNT(*) as total2 FROM reviews.guideReviews"
+		con.query(sql2, function(err, result){
+			if (err) throw err;
+			guideTotalReviews = result[0].total2;
+			res.render('guides',
+			{eatTotalReviews: eatTotalReviews,
+				guideTotalReviews:guideTotalReviews});
+		});
+	});
+});
+
+app.get('/about', function(req, res) {
 	var sql = "SELECT COUNT(*) as total FROM reviews.eatingReviews";
 	con.query(sql, function(err, result){
 		if (err) throw err;
