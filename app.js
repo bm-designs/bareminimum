@@ -26,7 +26,7 @@ var review;
 var eatTotalReviews;
 var guideTotalReviews
 
-var server = app.listen(8080, function() {
+var server = app.listen(process.env.PORT || 8080, function() {
 	console.log("lisening on port number %d", server.address().port);
 });
 
