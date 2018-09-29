@@ -5,7 +5,6 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
-var mysql = require('mysql');
 
 var util = require('util');
 var app = express();
@@ -26,66 +25,74 @@ var review;
 var eatTotalReviews;
 var guideTotalReviews
 
-var server = app.listen(process.env.PORT || 8080, function() {
+var server = app.listen(process.env.PORT || 3000, function() {
 	console.log("lisening on port number %d", server.address().port);
 });
 
-var con = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "Bareminimum27"
-});
+const {Pool, Client} = require('pg');
+const connectionString = 'postgresql://jlaskk:miami014@localhost:5432/BMDB'
+const client = new Client({
+  connectionString: connectionString,
+})
+client.connect()
 
-con.connect(function(err) {
-  if (err) throw err;
-  console.log("Connected!");
-});
+// client.query('SELECT COUNT(*) as total FROM eatingreviews', (err, res) => {
+//   console.log(err, res)
+  
+// })
+// const client = new pg.Client({
+// 	user: 'postgres',
+//   	host: 'localhost',
+//   	database: 'BMDB',
+//   	password: '',
+//   	port: 5432,
+// });
+
 
 app.get('/', function(req, res) {
-	var sql = "SELECT COUNT(*) as total FROM reviews.eatingReviews";
-	con.query(sql, function(err, result){
+	
+	client.query('SELECT COUNT(*) as total FROM eatingreviews', (err, result) =>{
 		if (err) throw err;
-		eatTotalReviews = result[0].total;
-		var sql2 = "SELECT COUNT(*) as total2 FROM reviews.guideReviews"
-		con.query(sql2, function(err, result){
+		eatTotalReviews = result.rows[0].total;
+		client.query('SELECT COUNT(*) as total2 FROM guidereviews', function(err, result){
 			if (err) throw err;
-			guideTotalReviews = result[0].total2;
+			guideTotalReviews = result.rows[0].total2;
 			res.render('guides',
 			{eatTotalReviews: eatTotalReviews,
 				guideTotalReviews:guideTotalReviews});
 		});
+
 	});
+	
 });
 
-app.get('/', function(req, res) {
-	var sql = "SELECT COUNT(*) as total FROM reviews.eatingReviews";
-	con.query(sql, function(err, result){
+app.get('/guides', function(req, res) {
+	client.query('SELECT COUNT(*) as total FROM eatingreviews', (err, result) =>{
 		if (err) throw err;
-		eatTotalReviews = result[0].total;
-		var sql2 = "SELECT COUNT(*) as total2 FROM reviews.guideReviews"
-		con.query(sql2, function(err, result){
+		eatTotalReviews = result.rows[0].total;
+		client.query('SELECT COUNT(*) as total2 FROM guidereviews', function(err, result){
 			if (err) throw err;
-			guideTotalReviews = result[0].total2;
+			guideTotalReviews = result.rows[0].total2;
 			res.render('guides',
 			{eatTotalReviews: eatTotalReviews,
 				guideTotalReviews:guideTotalReviews});
 		});
+
 	});
 });
 
 app.get('/about', function(req, res) {
-	var sql = "SELECT COUNT(*) as total FROM reviews.eatingReviews";
-	con.query(sql, function(err, result){
+	client.query('SELECT COUNT(*) as total FROM eatingreviews', (err, result) =>{
 		if (err) throw err;
-		eatTotalReviews = result[0].total;
-		var sql2 = "SELECT COUNT(*) as total2 FROM reviews.guideReviews"
-		con.query(sql2, function(err, result){
+		eatTotalReviews = result.rows[0].total;
+		client.query('SELECT COUNT(*) as total2 FROM guidereviews', function(err, result){
 			if (err) throw err;
-			guideTotalReviews = result[0].total2;
+			guideTotalReviews = result.rows[0].total2;
 			res.render('guides',
 			{eatTotalReviews: eatTotalReviews,
 				guideTotalReviews:guideTotalReviews});
 		});
+
 	});
 });
 
@@ -95,44 +102,54 @@ app.get('/apparel', function(req, res) {
 	
 
 app.get("/eatingReviews", function(req,res) {
-	con.query("SELECT * FROM reviews.eatingReviews", function(err, rows) {
-		eatReviews = rows;
-		console.log(eatReviews[0]);
+	client.query("SELECT * FROM eatingreviews", function(err, result) {
+		eatReviews = result.rows;
 		if (err) throw err;
+		console.log(eatReviews);
 		res.render('eatingReviews', 
 		{eatReviews:eatReviews});
 	});
-	
 });
 
 app.get("/guideReviews", function(req,res) {
-	con.query("SELECT * FROM reviews.guideReviews", function(err, rows) {
-		guideReviews = rows;
+	client.query("SELECT * FROM guidereviews", function(err, result) {
+		guideReviews = result.rows;
 		if (err) throw err;
 		res.render('guideReviews', 
 		{guideReviews:guideReviews});
 	});
 });
+
 app.post("/processEatingReview", function(req,res) {
 	var data = req.body;
-	var sql = "INSERT INTO reviews.eatingReviews (Name, Email, Review, Rating) VALUES ?";
-	var values = [[data.revieweeName, data.email, data.review, data.rating]];
-	con.query(sql, [values], function (err, result) {
+	var values = [data.revieweeName, data.email, data.review, data.rating];
+	client.query('INSERT INTO eatingreviews (Name, Email, Review, Rating) VALUES ($1, $2, $3, $4)', values, function (err, result) {
     if (err) throw err;
     console.log("1 record inserted");
   });
-	res.render('eatingReviews');
+	client.query("SELECT * FROM eatingreviews", function(err, result) {
+		eatReviews = result.rows;
+		if (err) throw err;
+		console.log(eatReviews);
+		res.render('eatingReviews', 
+		{eatReviews:eatReviews});
+	});
 });
+
 app.post("/processGuideReview", function(req,res) {
 	var data = req.body;
-	var sql = "INSERT INTO reviews.guideReviews (Name, Email, Review, Rating) VALUES ?"
-	var values = [[data.revieweeName, data.email, data.review, data.rating]];
-	con.query(sql, [values], function (err, result) {
+	var sql = ""
+	var values = [data.revieweeName, data.email, data.review, data.rating];
+	client.query('INSERT INTO guidereviews (Name, Email, Review, Rating) VALUES ($1, $2, $3, $4)', values, function (err, result) {
     if (err) throw err;
     console.log("1 record inserted");
   });
-	res.render('guideReviews');
+	client.query("SELECT * FROM guidereviews", function(err, result) {
+		guideReviews = result.rows;
+		if (err) throw err;
+		res.render('guideReviews', 
+		{guideReviews:guideReviews});
+	});
 
 });
-
 module.exports = app;

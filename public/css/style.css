@@ -201,6 +201,7 @@ Review Styling
 }
 .rating {
     width: 15%;
+    border-bottom: solid white 2px;
 }
 .reviewTitle {
     text-align: left;
@@ -252,7 +253,7 @@ Review Styling
 
 #reviews {
     margin-left: 30px;
-    border-bottom: solid white 2px;
+
     width: max-content;
 }
 

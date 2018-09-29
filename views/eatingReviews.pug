@@ -35,9 +35,9 @@ html(lang='en')
       .reviewBox
       block content
         each val in eatReviews
-          h3.review= val.Name
-          p.review= val.Review
-          img.rating(src='public/resources/imgs/reviewStar' + val.Rating + ".png") 
+          h3.review= val.name
+          p.review= val.review
+          img.rating(src='public/resources/imgs/reviewStar' + val.rating + ".png") 
     script(src='public/controllers/js/script.js')
 
 
