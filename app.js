@@ -36,18 +36,6 @@ const client = new Client({
 })
 client.connect()
 
-// client.query('SELECT COUNT(*) as total FROM eatingreviews', (err, res) => {
-//   console.log(err, res)
-  
-// })
-// const client = new pg.Client({
-// 	user: 'postgres',
-//   	host: 'localhost',
-//   	database: 'BMDB',
-//   	password: '',
-//   	port: 5432,
-// });
-
 
 app.get('/', function(req, res) {
 	
