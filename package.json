@@ -2,7 +2,7 @@
   "name": "bareminimum",
   "version": "1.0.0",
   "description": "Website for brand",
-  "main": "homepage.html",
+  "main": "app.js",
   "scripts": {
     "start": "node app.js"
   },

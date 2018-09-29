@@ -28,9 +28,13 @@ var guideTotalReviews
 var server = app.listen(process.env.PORT || 3000, function() {
 	console.log("lisening on port number %d", server.address().port);
 });
-
+process.on('unhandledRejection', (reason, p) => {
+  console.log('Unhandled Rejection at: Promise', p, 'reason:', reason);
+  // application specific logging, throwing an error, or other logic here
+});
 const {Pool, Client} = require('pg');
 const connectionString = 'postgresql://jlaskk:miami014@localhost:5432/BMDB'
+//const connectionString = 'postgres://igaadmdcybtzah:ce4e9ef2f4d53070acb7d4c6c80be2e731b0bf7358a7ab2673bd055a433a87f0@ec2-54-225-241-25.compute-1.amazonaws.com:5432/d3b1ct3mjklqlb'
 const client = new Client({
   connectionString: connectionString,
 })
@@ -92,7 +96,6 @@ app.get("/eatingReviews", function(req,res) {
 	client.query("SELECT * FROM eatingreviews", function(err, result) {
 		eatReviews = result.rows;
 		if (err) throw err;
-		console.log(eatReviews);
 		res.render('eatingReviews', 
 		{eatReviews:eatReviews});
 	});
@@ -117,7 +120,6 @@ app.post("/processEatingReview", function(req,res) {
 	client.query("SELECT * FROM eatingreviews", function(err, result) {
 		eatReviews = result.rows;
 		if (err) throw err;
-		console.log(eatReviews);
 		res.render('eatingReviews', 
 		{eatReviews:eatReviews});
 	});
