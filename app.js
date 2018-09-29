@@ -37,8 +37,7 @@ const client = new Client({
 client.connect()
 
 
-app.get('/', function(req, res) {
-	
+app.get('/', function(req, res) {	
 	client.query('SELECT COUNT(*) as total FROM eatingreviews', (err, result) =>{
 		if (err) throw err;
 		eatTotalReviews = result.rows[0].total;
