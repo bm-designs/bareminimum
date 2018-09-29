@@ -24,8 +24,9 @@ var guideReviews;
 var review;
 var eatTotalReviews;
 var guideTotalReviews
+const PORT = process.env.PORT || 3000
 
-var server = app.listen(process.env.port || 3000, function() {
+var server = app.listen(PORT || 3000, function() {
 	console.log("lisening on port number %d", server.address().port);
 });
 process.on('unhandledRejection', (reason, p) => {
