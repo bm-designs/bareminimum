@@ -27,7 +27,7 @@ html(lang='en')
         br
         label.reviewLabel Review
         br
-        input.userReview(type='text', name='review')
+        textarea.userReview(type='text', name='review')
         label Rating
         input.ratingSelect(type='number', name='rating', min='1', max='5')
         button.submitButton(type='submit', onclick='insertReview()') Submit
