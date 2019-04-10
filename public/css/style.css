@@ -1,6 +1,6 @@
 html {
     background-color: black;
-    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    font-family: sans-serif;
 }
 body {
     margin: 0px;
@@ -8,10 +8,9 @@ body {
 .center {
     margin-left: 10%;
     margin-right: 10%;
+    margin-top: 5%;
     background-color: black;
-    height: max-content;
-    position: relative;
-    top: -23px; 
+    height: max-content; 
 }
 .header img {
     height: 400px;
@@ -31,9 +30,7 @@ body {
 
 }
 .navbar {
-    background-image: url("gold.jpg");
-    background-repeat: none;
-    background-size: 100%;
+    background-color: #e5bb35;
     margin-right: 0px;
     margin-left: 0px;
     margin-top:0px;
@@ -238,15 +235,17 @@ Apparel Styling
 
  ***************/
  .item {
-    width: 500px;
-    height: 500px;   
+    width: 750px;
+    height: 500px;  
+    border:10px solid #e5bb35;
+    margin-top: 5%; 
  }
 
- .leftCatalog {
-    float: left;
-    width: 540px;
+ .Catalog {
+    width: 750px;
     padding: 0px;
-    margin-left: 100px;
+    margin-left: auto;
+    margin-right: auto;
  }
 
  .leftCatalog img {
@@ -262,39 +261,63 @@ Apparel Styling
  .rightCatalog img {
     margin: 20px;
  }
- @media screen and (max-width: 375px) {
-    .item {
-        width: 100px;
-        height: 100px;   
-    }
-    
-    .rightCatalog {
-        margin-right: 0px;
-        float: right;
-        width: 170px;
-        padding: 0px;
-    }
-    .leftCatalog img {
-        margin: 10px;
-    }
-    .leftCatalog {
-        float: left;
-        width: 170px;
-        padding: 0px;
-        margin-left: 0px;
-    }
-     .rightCatalog img {
-        margin: 10px;
-    }
+ .buynow {
+    color: white;
+    margin-left: 38%;
+    margin-right: 50%;
+    text-align: center;
  }
+ .buynow table {
+    margin-left: 50%;
+ }
+
 
  .apparelCenter {
     
  }
+ /******
+ About Page
+ *******/
+ .aboutPage {
+    color: white;
+    text-align: center;
+    width: 50vw;
+    margin-right: auto;
+    margin-left: auto;
+ }
+ #socialmediaicon {
+    height: 21px;
+ }
+ /*******
+ Lessons page
+ ********/
+ iframe {
+    margin-left: 120px;
+    margin-top: 5%;
+    border:2px solid #e5bb35;
+ }
  /* All of the mobile adjustments
 
     */
-@media screen and (max-width: 375px) {
+    @media screen and (max-width: 375px) {
+    .item {
+        width: 300px;
+        height: 250px;   
+    }
+    
+     .Catalog {
+    width: 325px;
+    padding: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    }
+
+    .buynow {
+        margin-left: 25%;
+    }
+    .buynow table {
+        margin-left: 60%;
+    }
     .bookInfo {
     color: black;
     width: 50%;
@@ -310,13 +333,12 @@ Apparel Styling
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     }
     .center {
-    margin-left: 20px;
-    margin-right: 0px;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 15%;
     background-color: black;
-    height: max-content;
-    position: relative;
-    top: -23px; 
-    }
+    height: max-content; 
+}
     .invItem {
     border-style: solid;
     border-radius: 2px 10px 4px 20px; 
@@ -325,6 +347,11 @@ Apparel Styling
     border-radius: 5%;
     background-color: white;
     }
+    iframe {
+        width: 345px;
+        margin-left: 10px;
+        height: 300px;
+ }
 }
 @media screen and (max-width: 500px) {
     .bookInfo {
@@ -360,10 +387,7 @@ Apparel Styling
     .invItem h1 {
         font-size: 150%;
     }
-    .item {
-        width: 150px;
-        height: 150px;   
-    }
+
     
     .rightCatalog {
         margin-right: 0px;

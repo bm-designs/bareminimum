@@ -40,6 +40,7 @@ const client = new Client({
   connectionString: connectionString,
   ssl: true,
 })
+client.connect()
 
 
 
@@ -82,7 +83,7 @@ app.get('/about', function(req, res) {
 		client.query('SELECT COUNT(*) as total2 FROM guidereviews', function(err, result){
 			if (err) throw err;
 			guideTotalReviews = result.rows[0].total2;
-			res.render('guides',
+			res.render('about',
 			{eatTotalReviews: eatTotalReviews,
 				guideTotalReviews:guideTotalReviews});
 		});
@@ -143,5 +144,9 @@ app.post("/processGuideReview", function(req,res) {
 		{guideReviews:guideReviews});
 	});
 
+
+});
+app.get("/lessons", function(req, res){
+	res.render('lessons');
 });
 module.exports = app;
