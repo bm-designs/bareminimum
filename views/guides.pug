@@ -24,9 +24,9 @@ html(lang='en')
           p
             | The guide has consolidated recommended information gathered by certified Personal Trainer, Software Engineer, and Motivator; James Laskey. It outlines the eating habits of the Bare Minimum (BM) philosophy and serves to provide a myriad of habits or systems to incorporate into your everyday life that aim to deter temptation and increase nutrition.
         .invButtons
+          a.reviews(href='eatingReviews')= "Reviews:" + eatTotalReviews 
           a.Button(href='https://drive.google.com/file/d/1iy3mubqtcqRMEnyM3BIVIecBymje8GTl/view?usp=sharing')
             | View
-          a.reviews(href='eatingReviews')= "Reviews:" + eatTotalReviews 
       img.Cover(src='public/resources/imgs/BM-bookCoverAlt.png')
       .bookInfo
         .invItem

@@ -138,14 +138,13 @@ h1 {
 .Button {
     font-size: 20px;
     display: block;
-    margin-right: 75px;
     background-color: gold;
     border-radius: 10px;
     text-align: left;
     padding: 20px;
     text-decoration: none;
     color: white;
-    float: right;
+    float: left;
     transition: 0.3s;
     opacity: 0.6;
 
@@ -160,7 +159,6 @@ Review Styling
 .reviews:link {
     color: gold;
     float: right;
-    margin-right: 75px;
     margin-top: 20px;
 }
 .reviews:visited {
@@ -287,6 +285,10 @@ Apparel Styling
  }
  #socialmediaicon {
     height: 21px;
+    margin-bottom: 5px;
+ }
+ #youtube {
+    height: 30px;
  }
  /*******
  Lessons page
