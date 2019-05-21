@@ -1,4 +1,4 @@
 web: node app.js
 "scripts": {
-  "start": "node app.js"
+  "start": "npm start"
 }

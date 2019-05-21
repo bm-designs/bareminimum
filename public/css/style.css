@@ -1,209 +1,172 @@
 html {
-    background-color: black;
-    font-family: sans-serif;
+    background-color: white;
+    font-family: "Lucida Console", Monaco, monospace
 }
 body {
     margin: 0px;
 }
-.center {
-    margin-left: 10%;
-    margin-right: 10%;
-    margin-top: 5%;
+#exit {
+    position: fixed;
+    top: 10%;
+    right: 38%;
+}
+.donation{
+    background-color: transparent;
+    
+}
+.toShow {
+    color: white;
     background-color: black;
-    height: max-content; 
+    background-opacity: 0.6;
+    border: solid 2px white;
+    border-radius: 5%;
+    padding: 5%; 
+    width: 15vw;
+    text-align: center;
+    position: fixed;
+    top: 5%;
+    left: 38%;
+    visibility: hidden;
+    z-index: 99;
 }
-.header img {
-    height: 400px;
-    width: 400px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 50px;
+.toShow form {
+    margin-left: 10%;
 }
-.banner {
-    padding: 0px;
-    padding-bottom: 0px;
-    margin:0px;
-    width: 101%;
+#donation {
+    position: fixed;
+    bottom: 5%;
+    right: 3%;
+    z-index: 99;
+    height: 100px;
+    width: 100px;
+    z-index: 99;
+    border-radius: 50%;
+    border: solid 2px #e5bb35;
+    background-color: transparent;
+}
+.coverPhoto{
+    width: 100vw;
+    height: 50vw;
     position: relative;
-    top: 2px;
+    left:-67px;
+    display: inline-block;
 
 }
-.navbar {
-    background-color: #e5bb35;
-    margin-right: 0px;
-    margin-left: 0px;
-    margin-top:0px;
-    margin-bottom:0px;
-    position: relative;
-    list-style-type: none; 
-    font-size: 14px;
+.coverPhoto img {
+    height: 60vw;
+    width: 105vw;
+    padding-right: 10px;
 }
-.navbar a {
-    text-decoration: none;
-}
-.navbar a:hover {
-    text-decoration: underline;
-}
-.navbar a:link {
-    color: black;
-}
-.navbar a:visited {
-    color: white;
-}
-.navbar li {
-    margin: 0px;
-    padding: 10px;
-    display: inline-block;
-    font-weight: 900;
-}
-h1 {
-    color: black;
-    font-size: 60px;
-    display: block;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
+#title {
+    position: absolute;
+    top: -5%;
+    left: 10%;
+    height: 40%;
+    width: 90vw;
 }
 .guides {
-   margin-left: 10px;
-   padding-left: 10px;
-   width: max-content;
-}
-.guide {
-    margin-left: 0px;
-   padding-left: 0px;
-   width: max-content;
-}
-.about {
-    float: right;
-    font-weight: 900;
-    padding: 10px;
-    padding-right: 50px;
-}
-.about:hover {
-    text-decoration: underline;
-}
-
-.director {
-    display: inline-block;
-    width: 100%;
-}
-.director a {
-    display: inline-block;
-
-}
-
-.title {
+    display: inline-flex;
+    width: 100vw;
     color: white;
-    padding-left: 10px;
-    padding-bottom: 0px;
-    margin-left: 0px;
-    text-align: left;
-    font-size: 35px;
-}
-.Cover {
+    margin-top: -10%;
+    padding-top: 10%;
     float: left;
-    width: 20%;
-    border:10px solid #e5bb35;
-    
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-
+    background-color: black;
 }
-
-.bookInfo {
-    color: black;
-    width: 600px;
-    font-size: 18px;
-    margin-left: 400px;
-    padding: 0px;  
-    padding-bottom: 100px;
+.guides img {
+    width: 15vw;
+    height: 35vh;
 }
-
-
-.invItem {
-    border-style: solid;
-    padding: 20px;    
-    margin-bottom: 10px;
-    border-radius: 10px;
-    background-color: white;
+.guides p {
+    size: 15px;
+    font-weight: 300;
 }
-.bookInfo h1 {
-    margin-bottom:0px;
-    padding: 0px;
-    text-align: left;
+.guides a {
+    padding: 5%;
+    text-align: center;
+}
+.guides a:link {
+    color: white;
+}
+.guides a:visited {
+    color: #e5bb35;
+}
+.guides h3 {
     font-size: 30px;
-    font-weight:900;
+    font-weight: 400;
 }
-.Button {
-    font-size: 20px;
-    display: block;
-    background-color: gold;
-    border-radius: 10px;
-    text-align: left;
-    padding: 20px;
-    text-decoration: none;
+#guidetitle {
+    text-align: center;
+    font-weight: 300;
+    line-height: 0.1em;
+}
+#guide {
+    width: 20vw;
+    margin-left: 2%;
+}
+#guidebuttons {
+    margin-left: 40%;
+}
+#description {
+    font-size: 13px;
+    text-align: center;
+}
+#cover {
+    border:10px solid #e5bb35;
+    border-radius: 2%;
+    margin-left: 10%;
+}
+.container {
+    background-color: black;
+    height: 100vh;
+    width: 100vw;
     color: white;
-    float: left;
-    transition: 0.3s;
-    opacity: 0.6;
+    padding-top: 5%;
+}
+.review {
+    
+}
+.review img {
+    height: 25px;
+    width: 100px;
+}
+.review h3 {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 0.1em;
+}
+.review p {
+    font-size: 15px;
+    font-weight: 200;
+}
+#reviewTitle {
+    font-weight: 500;
+    text-align: center;
 
 }
-.Button:hover {
-    opacity: 1;
-}
-/*****************
-Review Styling
-***************/
 
-.reviews:link {
-    color: gold;
-    float: right;
-    margin-top: 20px;
-}
-.reviews:visited {
-    color: grey;
-}
 .reviewBox {
-    margin-left: 50px;
     border-bottom: 2px solid black;
-    width: 60%;
 }
 .rating {
-    width: 10%;
+    width: 1%;
     border-bottom: solid white 2px;
 }
 .reviewTitle {
-    text-align: left;
     font-size: 35px;
 
 }
 .newReview {
-    float: right;
-    border: 2px solid black;
-    border-radius: 10px;
-    background-color: gray;
-    background-opacity: 0.2;
-    padding: 30px;
-    padding-right: 0px;
-    width: 300px;
-    margin-right: 50px;
+    border-bottom: 2px solid #e5bb35;
+    padding-bottom: 10%;
+    height: 20vw;
 }
 
-.userReview {
-    width:250px;
+#largeTextbox {
+    width: 80%;
     height:100px;
 }
-.userReview input {
-    padding-top: 0;
-   padding-left: 0;
-}
-.revieweName {
-    margin-bottom: 20px;
-}
-.revieweeNameInput {
-    width: 200px;
-}
+
 .submitButton {
     float: right;
     padding:10px;
@@ -216,15 +179,41 @@ Review Styling
     margin-top: 20px;
     width: 20px;
 }
-
-.review {
-    color:white;
+#textbox {
+    width: 80%;
+    margin-bottom: 2%;
 }
 
 #reviews {
-    margin-left: 30px;
-    font-size: larger;
-    width: 50%;
+    width: 30vw;
+}
+#scrollReview {
+    margin-top: 5%;
+    overflow-y: scroll;
+    height: 40vw;
+}
+.question {
+    height: 26.4vw;
+    padding-left: 1%;
+}
+#smallerLabels {
+    font-size: 15px;
+    font-weight: 300;
+}
+#smallerText {
+    font-size: 12px;
+    font-weight: 200;
+}
+.feedback {
+    margin-left: auto;
+}
+.submittedQuestions{
+    display: inline;
+    width: 33vw;
+}
+#submission h3 {
+    font-size: 20px;
+    line-height: 0.1em;
 }
 
 /***********
@@ -233,45 +222,50 @@ Apparel Styling
 
  ***************/
  .item {
-    width: 750px;
-    height: 500px;  
+    width: 375px;
+    height: 250px;  
     border:10px solid #e5bb35;
+    border-radius: 2%;
     margin-top: 5%; 
  }
 
  .Catalog {
-    width: 750px;
+    width: 100vw;
     padding: 0px;
-    margin-left: auto;
-    margin-right: auto;
+    background-color: black;
+
  }
 
- .leftCatalog img {
-    margin: 20px;
+ .leftCatalog  {
+    width: 45vw;
+    display: inline-block;
+    padding-left: 10%;
  }
 
  .rightCatalog {
-    margin-right: 100px;
     float: right;
-    width: 540px;
- }
+    padding-right: 10%;
 
- .rightCatalog img {
-    margin: 20px;
+ }
+ .rightCatalog .buynow {
+    margin-left: 30%;
+ }
+ .rightCatalog .buynow table {
+    margin-left: 17%;
  }
  .buynow {
     color: white;
-    margin-left: 38%;
-    margin-right: 50%;
-    text-align: center;
+    margin-left: 15%;
  }
  .buynow table {
-    margin-left: 50%;
+    margin-left: 8.8%;
+        text-align: center;
  }
 
 
- .apparelCenter {
-    
+ #apparelTitle {
+    text-align: center;
+    color: white;
  }
  /******
  About Page
@@ -296,7 +290,7 @@ Apparel Styling
  iframe {
     margin-left: 120px;
     margin-top: 5%;
-    border:2px solid #e5bb35;
+    border:4px solid #e5bb35;
  }
  /* All of the mobile adjustments
 

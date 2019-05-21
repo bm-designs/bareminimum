@@ -4,7 +4,10 @@
   "description": "Website for brand",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "npm start"
+  },
+  "engines": {
+    "node": "10.15.1"
   },
   "author": "jlaskk",
   "license": "UNLICENSED",
@@ -20,5 +23,8 @@
     "pug": "^2.0.3",
     "square-connect": "^2.20180918.0",
     "util": "^0.11.0"
+  },
+  "devDependencies": {
+    "jquery": "^3.4.1"
   }
 }

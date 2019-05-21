@@ -60,3 +60,9 @@ function insertReview() {
 
 	debugger;
 }
+function handleclick() {
+	var donate = $(".toShow").css('visibility', 'visible');
+}
+function closedonate() {
+	var dom = $(".toShow").css("visibility", "hidden");
+}

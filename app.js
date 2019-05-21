@@ -8,9 +8,6 @@ var cookieParser = require('cookie-parser');
 
 var util = require('util');
 var app = express();
-var routes = require("./routes");
-app.use(routes);
-
 app.set('view engine', 'pug');
 app.set('/views', __dirname+'/views');
 
@@ -23,7 +20,8 @@ var eatReviews;
 var guideReviews; 
 var review;
 var eatTotalReviews;
-var guideTotalReviews
+var guideTotalReviews;
+var questions;
 const PORT = process.env.PORT || 3000
 
 var server = app.listen(PORT || 3000, function() {
@@ -43,15 +41,16 @@ const client = new Client({
 client.connect()
 app.get('/', function(req, res) {
 	
-	client.query('SELECT COUNT(*) as total FROM eatingreviews', (err, result) =>{
+	client.query('SELECT * FROM guidereviews', (err, result) =>{
 		if (err) throw err;
-		eatTotalReviews = result.rows[0].total;
-		client.query('SELECT COUNT(*) as total2 FROM guidereviews', function(err, result){
+		 guideReviews = result.rows;
+		client.query('SELECT name, submittedquestion, comments FROM questions', function(err, result){
 			if (err) throw err;
-			guideTotalReviews = result.rows[0].total2;
-			res.render('guides',
-			{eatTotalReviews: eatTotalReviews,
-				guideTotalReviews:guideTotalReviews});
+			questions = result.rows;
+			console.log(questions);
+			res.render('homepage',
+			{guideReviews:guideReviews,
+				questions:questions});
 		});
 
 	});
@@ -146,4 +145,15 @@ app.post("/processGuideReview", function(req,res) {
 app.get("/lessons", function(req, res){
 	res.render('lessons');
 });
+app.post("/question", function(req,res){
+	var data = req.body;
+	var values = [data.fitname, data.fitemail, data.fitquestion];
+	console.log(values);
+	client.query("INSERT INTO questions (name, email, submittedquestion) VALUES ($1, $2, $3)", values, function(err, result) {
+		if (err) {
+			throw err;
+		}
+		console.log("row inserted")
+	})
+})
 module.exports = app;
