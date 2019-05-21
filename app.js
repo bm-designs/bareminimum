@@ -10,11 +10,9 @@ var util = require('util');
 var app = express();
 app.set('view engine', 'pug');
 app.set('/views', __dirname+'/views');
-
 app.use(express.static(__dirname + 'public'));
 app.use('/public', express.static(__dirname +'/public'));
 app.use(cookieParser());
-var config = require('./config');
 app.use(bodyParser.urlencoded({ extended: false }));
 var eatReviews;
 var guideReviews; 
