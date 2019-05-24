@@ -5,7 +5,6 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
-
 var util = require('util');
 var app = express();
 app.set('view engine', 'pug');
@@ -42,10 +41,9 @@ app.get('/', function(req, res) {
 	client.query('SELECT * FROM guidereviews', (err, result) =>{
 		if (err) throw err;
 		 guideReviews = result.rows;
-		client.query('SELECT name, submittedquestion, comments FROM questions', function(err, result){
-			if (err) throw err;
+		client.query('SELECT name, submittedquestion, marker FROM questions', function(err, result){
+			if (err) res.render("about");
 			questions = result.rows;
-			console.log(questions);
 			res.render('homepage',
 			{guideReviews:guideReviews,
 				questions:questions});
@@ -69,7 +67,33 @@ app.get('/guides', function(req, res) {
 
 	});
 });
-
+app.post("/comment", function(req,res){
+	var data = req.body;
+	var query = "INSERT INTO comments (question, comment) VALUES ($1, $2)";
+	var values = [parseInt(data.marker), data.comment];
+	client.query(query,values, function(err, result){
+		if (err) {
+			console.log(err)
+		}
+		res.render('about')
+	})
+})
+app.post("/comments", function(req,res){
+	var questionid = req.body.id;
+	var query = "SELECT * FROM comments WHERE question= " +questionid;
+	client.query(query, function(err, result){
+		if (err) {
+			console.log('This is bad')
+		}
+		if (result){
+			var pastcomments = result.rows;
+			res.send({pastcomments:pastcomments})
+		} else {
+			res.send("No comments");
+		}
+		
+	})
+})
 app.get('/about', function(req, res) {
 	client.query('SELECT COUNT(*) as total FROM eatingreviews', (err, result) =>{
 		if (err) throw err;
@@ -85,44 +109,6 @@ app.get('/about', function(req, res) {
 	});
 });
 
-app.get('/apparel', function(req, res) {
-	res.render('apparel')
-})
-	
-
-app.get("/eatingReviews", function(req,res) {
-	client.query("SELECT * FROM eatingreviews", function(err, result) {
-		eatReviews = result.rows;
-		if (err) throw err;
-		res.render('eatingReviews', 
-		{eatReviews:eatReviews});
-	});
-});
-
-app.get("/guideReviews", function(req,res) {
-	client.query("SELECT * FROM guidereviews", function(err, result) {
-		guideReviews = result.rows;
-		if (err) throw err;
-		res.render('guideReviews', 
-		{guideReviews:guideReviews});
-	});
-});
-
-app.post("/processEatingReview", function(req,res) {
-	var data = req.body;
-	var values = [data.revieweeName, data.email, data.review, data.rating];
-	client.query('INSERT INTO eatingreviews (Name, Email, Review, Rating) VALUES ($1, $2, $3, $4)', values, function (err, result) {
-    if (err) throw err;
-    console.log("1 record inserted");
-  });
-	client.query("SELECT * FROM eatingreviews", function(err, result) {
-		eatReviews = result.rows;
-		if (err) throw err;
-		res.render('eatingReviews', 
-		{eatReviews:eatReviews});
-	});
-});
-
 app.post("/processGuideReview", function(req,res) {
 	var data = req.body;
 	var sql = ""
@@ -133,25 +119,31 @@ app.post("/processGuideReview", function(req,res) {
   });
 	client.query("SELECT * FROM guidereviews", function(err, result) {
 		guideReviews = result.rows;
-		if (err) throw err;
+		if (err) res.render("about");
 		res.render('guideReviews', 
 		{guideReviews:guideReviews});
 	});
 
 
 });
-app.get("/lessons", function(req, res){
-	res.render('lessons');
-});
+
 app.post("/question", function(req,res){
 	var data = req.body;
-	var values = [data.fitname, data.fitemail, data.fitquestion];
-	console.log(values);
-	client.query("INSERT INTO questions (name, email, submittedquestion) VALUES ($1, $2, $3)", values, function(err, result) {
+	var marker;
+	client.query("SELECT COUNT(*) as total FROM questions", function(err, result){
 		if (err) {
-			throw err;
+			console.log(err)
+			res.send("No Questions")
 		}
-		console.log("row inserted")
+		marker = result.rows.total;
+		var values = [data.fitname, data.fitemail, data.fitquestion, marker];
+		client.query("INSERT INTO questions (name, email, submittedquestion, marker) VALUES ($1, $2, $3, $4)", values, function(err, result) {
+		if (err) {
+			res.render("about");
+		}
+		res.render("about");
+		})
 	})
+	
 })
 module.exports = app;

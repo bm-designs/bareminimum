@@ -21,7 +21,6 @@ body {
     border: solid 2px white;
     border-radius: 5%;
     padding: 5%; 
-    width: 15vw;
     text-align: center;
     position: fixed;
     top: 5%;
@@ -109,7 +108,7 @@ body {
 }
 #description {
     font-size: 13px;
-    text-align: center;
+    text-align: justify;
 }
 #cover {
     border:10px solid #e5bb35;
@@ -215,7 +214,45 @@ body {
     font-size: 20px;
     line-height: 0.1em;
 }
+.comments {
+    visibility: hidden;
+    text-align: center;
+    color: white;
+}
+#comments {
+    border: solid 2px grey;
+    height: 75%;
+    width: 95%;
+    overflow-y: scroll;
+    margin-left: auto;
+    margin-right: auto;
 
+}
+#comments h3 {
+    margin-left: 2%;
+    text-align: left;
+}
+#comments p {
+    border-bottom: solid 1px white;
+    width: max-content;
+    margin-left: 2%;
+}
+#commentbox {
+    background-color: black;
+    position: fixed;
+    top: 10%;
+    left: 25%;
+    width: 50vw;
+    height: 85vh;
+    z-index: 99;
+}
+#closecomments {
+    position: relative;
+    float: right;
+}
+#marker{
+    width: 0;
+}
 /***********
 
 Apparel Styling
@@ -271,11 +308,15 @@ Apparel Styling
  About Page
  *******/
  .aboutPage {
-    color: white;
+    color: black;
     text-align: center;
     width: 50vw;
     margin-right: auto;
     margin-left: auto;
+ }
+ #homebutton {
+    height: max-content;
+    width: max-content;
  }
  #socialmediaicon {
     height: 21px;
@@ -291,28 +332,97 @@ Apparel Styling
     margin-left: 120px;
     margin-top: 5%;
     border:4px solid #e5bb35;
+    width: 1200px;
+    height: 603px;
  }
  /* All of the mobile adjustments
 
     */
-    @media screen and (max-width: 375px) {
+    @media screen and (min-width: 375px) {
+    iframe {
+    margin-left: 90px !important;
+    margin-top: 5% !important;
+    width: 800px !important;
+    height: 603px !important;
+    }
+    #bminput {
+        background-color: white;
+    }
+    #bmbutton{
+        background-color: white;
+    }
+    .bmbutton {
+        background-color: white;
+    }
+    .coverPhoto  img {
+        width:107vw;
+    }
+    #exit {
+        top: 6%;
+        right: 34%;
+    }
+    #guide {
+        display: contents;
+    }
+    .guides {
+        display: block;
+    }
+    .ratingSelect {
+        background-color: white;
+    }
+    #description {
+        padding: 2%;
+    }
+    #commentbox {
+        left: 5%;
+        width: 90vw;
+        height: 60vh;
+    }
+    #cover {
+        margin-left: 26%;
+        width: 45vw;
+    }
+    .review {
+        display: inline-flex;
+        width: 40vw;
+        margin-left: 2%;
+    }
+    .submittedQuestions {
+        display: inline-flex;
+        float: right;
+        width: 40vw;
+    }
+    .donation select {
+        background-color: white;
+    }
     .item {
         width: 300px;
         height: 250px;   
     }
     
      .Catalog {
-    width: 325px;
+    width: 100vw;
     padding: 0px;
     margin-left: auto;
     margin-right: auto;
     }
-
-    .buynow {
-        margin-left: 25%;
+    .Catalog select {
+        background: white;
     }
+    
     .buynow table {
-        margin-left: 60%;
+        margin-left: 12%;
+    }
+    .newReview {
+        border-bottom: solid 0px black;
+        width: 45vw;
+        display: inline-block;
+        margin-left: 3%;
+    }
+    .question {
+        width: 45vw;
+        display: inline-block;
+        position: absolute;
     }
     .bookInfo {
     color: black;
@@ -343,13 +453,41 @@ Apparel Styling
     border-radius: 5%;
     background-color: white;
     }
-    iframe {
-        width: 345px;
-        margin-left: 10px;
-        height: 300px;
- }
+    
 }
 @media screen and (max-width: 500px) {
+    iframe {
+    margin-left: 90px;
+    margin-top: 5%;
+    width: 800px;
+    height: 603px;
+    }
+    .coverPhoto  img {
+        width:107vw;
+    }
+    #guide {
+        display: contents;
+    }
+    .guides {
+        display: block;
+    }
+    #description {
+        padding: 2%;
+    }
+    #cover {
+        margin-left: 26%;
+        width: 45vw;
+    }
+    .review {
+        display: inline-flex;
+        width: 40vw;
+    }
+    
+    .submittedQuestions {
+        display: inline-flex;
+        float: right;
+        width: 40vw;
+    }
     .bookInfo {
     color: black;
     width: 50%;
