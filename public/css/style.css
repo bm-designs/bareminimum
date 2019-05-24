@@ -47,7 +47,6 @@ body {
     width: 100vw;
     height: 50vw;
     position: relative;
-    left:-67px;
     display: inline-block;
 
 }
@@ -267,7 +266,6 @@ Apparel Styling
  }
 
  .Catalog {
-    width: 100vw;
     padding: 0px;
     background-color: black;
 
@@ -339,6 +337,10 @@ Apparel Styling
 
     */
     @media screen and (min-width: 375px){
+    #title {
+        left: 5%;
+    }
+
     iframe {
     margin-left: 90px !important;
     margin-top: 5% !important;
@@ -355,7 +357,7 @@ Apparel Styling
         background-color: white;
     }
     .coverPhoto  img {
-        width:107vw;
+        width:100vw;
     }
     #exit {
         top: 7%;
@@ -366,6 +368,7 @@ Apparel Styling
     }
     .guides {
         display: block;
+        padding-bottom: 5%;
     }
     .guides p {
         font-size: 25px;
@@ -375,7 +378,7 @@ Apparel Styling
     }
     #description {
         padding: 2%;
-        font-size: 20px;
+        font-size: 30px;
     }
     #commentbox {
         left: 5%;
@@ -409,6 +412,10 @@ Apparel Styling
     .donation select {
         background-color: white;
     }
+    #donation {
+        width: 300px;
+        height: 300px;
+    }
     #comments p {
         font-size: 25px;
         width: inherit;
@@ -428,7 +435,6 @@ Apparel Styling
     }
     
      .Catalog {
-    width: 100vw;
     padding: 0px;
     margin-left: auto;
     margin-right: auto;
