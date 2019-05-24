@@ -10,6 +10,7 @@ html(lang='en')
     .donation
       .toShow
         button.bmbutton#exit(onclick='closedonate()') x
+        h3 Make a Bare Minimum Donation
         form(action='https://www.paypal.com/cgi-bin/webscr', method='post', target='_top')
           input(type='hidden', name='cmd', value='_s-xclick')
           input(type='hidden', name='hosted_button_id', value='VSS9W6QHV8S6C')
@@ -40,7 +41,7 @@ html(lang='en')
                 td
                   input(type='text', name='os1', maxlength='200')
           input(type='hidden', name='currency_code', value='USD')
-          input(type='image', src='https://www.paypalobjects.com/en_US/i/btn/btn_paynow_SM.gif', border='0', ,style='margin-right:10%' name='submit', alt='PayPal - The safer, easier way to pay online!')
+          input(type='image', src='https://www.paypalobjects.com/en_US/i/btn/btn_paynow_SM.gif', border='0', ,style='margin-right:24%' name='submit', alt='PayPal - The safer, easier way to pay online!')
           img(alt='', border='0', src='https://www.paypalobjects.com/en_US/i/scr/pixel.gif', width='1', height='1')
     .comments
       #commentbox

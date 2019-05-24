@@ -338,7 +338,7 @@ Apparel Styling
  /* All of the mobile adjustments
 
     */
-    @media screen and (min-width: 375px) {
+    @media screen and (min-width: 375px){
     iframe {
     margin-left: 90px !important;
     margin-top: 5% !important;
@@ -358,8 +358,8 @@ Apparel Styling
         width:107vw;
     }
     #exit {
-        top: 6%;
-        right: 34%;
+        top: 7%;
+        right: 16%;
     }
     #guide {
         display: contents;
@@ -367,11 +367,15 @@ Apparel Styling
     .guides {
         display: block;
     }
+    .guides p {
+        font-size: 25px;
+    }
     .ratingSelect {
         background-color: white;
     }
     #description {
         padding: 2%;
+        font-size: 20px;
     }
     #commentbox {
         left: 5%;
@@ -384,16 +388,39 @@ Apparel Styling
     }
     .review {
         display: inline-flex;
-        width: 40vw;
         margin-left: 2%;
+    }
+    #reviews {
+        width: 50vw;
+    }
+    .review h3 {
+        font-size: 30px;
+    }
+    .review  p {
+        font-size: 25px;
     }
     .submittedQuestions {
         display: inline-flex;
         float: right;
-        width: 40vw;
+        width: 45vw;
+        border-left: solid grey 2px;
+        padding-left: 1%;
     }
     .donation select {
         background-color: white;
+    }
+    #comments p {
+        font-size: 25px;
+        width: inherit;
+    }
+    .donation {
+        font-size: 30px;
+    }
+    .toShow {
+        left: 16%;
+    }
+    .toShow form {
+        margin-left: 17%;
     }
     .item {
         width: 300px;
