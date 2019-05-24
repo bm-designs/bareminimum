@@ -370,6 +370,9 @@ Apparel Styling
         display: block;
         padding-bottom: 5%;
     }
+    .guides a {
+        font-size: 30px;
+    }
     .guides p {
         font-size: 25px;
     }
@@ -413,8 +416,8 @@ Apparel Styling
         background-color: white;
     }
     #donation {
-        width: 300px;
-        height: 300px;
+        width: 250px;
+        height: 250px;
     }
     #comments p {
         font-size: 25px;
