@@ -389,8 +389,11 @@ Apparel Styling
         height: 60vh;
     }
     #cover {
-        margin-left: 26%;
+        margin-left: 22%;
         width: 45vw;
+    }
+    #cover;hover {
+        cursor: pointer;
     }
     .review {
         display: inline-flex;
@@ -489,6 +492,10 @@ Apparel Styling
     border-radius: 5%;
     background-color: white;
     }
+    #homebutton img {
+        width: 90vw;
+        height: 25vh;
+    }
     
 }
 @media screen and (max-width: 500px) {
@@ -511,8 +518,12 @@ Apparel Styling
         padding: 2%;
     }
     #cover {
-        margin-left: 26%;
+
+        margin-left: 22%;
         width: 45vw;
+    }
+    #cover:hover {
+        cursor: pointer;
     }
     .review {
         display: inline-flex;
