@@ -44,7 +44,7 @@ app.get('/', function(req, res) {
 		client.query('SELECT name, submittedquestion, marker FROM questions', function(err, result){
 			if (err) res.render("about");
 			questions = result.rows;
-			res.render('homepage',
+			res.render('home',
 			{guideReviews:guideReviews,
 				questions:questions});
 		});
@@ -52,6 +52,20 @@ app.get('/', function(req, res) {
 	});
 	
 });
+app.get('/reviews', function(req, res){
+	client.query('SELECT * FROM guidereviews', (err, result) =>{
+		if (err) throw err;
+		 guideReviews = result.rows;
+		client.query('SELECT name, submittedquestion, marker FROM questions', function(err, result){
+			if (err) res.render("about");
+			questions = result.rows;
+			res.render('reviews',
+			{guideReviews:guideReviews,
+				questions:questions});
+		});
+
+	});
+})
 
 app.get('/guides', function(req, res) {
 	client.query('SELECT COUNT(*) as total FROM eatingreviews', (err, result) =>{

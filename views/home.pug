@@ -1,0 +1,180 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    title BM Functional Fitness
+    meta(name='Bare Minimum', content='Exercise Education')
+    meta(name='James Laskey', content='SitePoint')
+    link(rel='stylesheet', type='text/css', href='public/css/style.css', charset='utf-8')
+    script(src="https://code.jquery.com/jquery-3.4.1.min.js")
+    script(src='public/controllers/js/script.js')
+  body
+    .donation
+      .toShow
+        button.bmbutton#exit(onclick='closedonate()') x
+        h3 Make a Bare Minimum Donation
+        form(action='https://www.paypal.com/cgi-bin/webscr', method='post', target='_top')
+          input(type='hidden', name='cmd', value='_s-xclick')
+          input(type='hidden', name='hosted_button_id', value='VSS9W6QHV8S6C')
+          table
+            tbody
+              tr
+                td
+                  input(type='hidden', name='on0', value='Contributions')
+                  | Contributions
+              tr
+                td
+                  select(name='os0')
+                    option(value='Option 1') Option 1 $2.00 USD
+                    option(value='Option 2') Option 2 $5.00 USD
+                    option(value='Option 3') Option 3 $10.00 USD
+                    option(value='Option 4') Option 4 $15.00 USD
+                    option(value='Option 5') Option 5 $20.00 USD
+                    option(value='Option 6') Option 6 $30.00 USD
+                    option(value='Option 7') Option 7 $40.00 USD
+                    option(value='Option 8') Option 8 $50.00 USD
+                    option(value='Option 9') Option 9 $75.00 USD
+                    option(value='Option 10') Option 10 $100.00 USD
+              tr
+                td
+                  input(type='hidden', name='on1', value='Note to Bare Minimum')
+                  | Note to Bare Minimum
+              tr
+                td
+                  input(type='text', name='os1', maxlength='200')
+          input(type='hidden', name='currency_code', value='USD')
+          input(type='image', src='https://www.paypalobjects.com/en_US/i/btn/btn_paynow_SM.gif', border='0', ,style='margin-right:24%' name='submit', alt='PayPal - The safer, easier way to pay online!')
+          img(alt='', border='0', src='https://www.paypalobjects.com/en_US/i/scr/pixel.gif', width='1', height='1')
+    .banner
+      h1#bannertext BARE MINIMUM
+    svg#donation(onclick='handleclick()')
+      circle(cx='125', cy='125',r='120', fill='white', stroke='black')
+      text(x='50', y='140' ) DONATION
+    #guide
+      h3#guidetitle Functional Fitness Guide
+      a(href='https://drive.google.com/file/d/16R4Innqi2y1RwEpAHBlA0Ae9m4Iml36O/view?usp=sharing')
+        img#cover(src='public/resources/imgs/BM-bookCoverAlt.png')
+      #guidebuttons
+        a(href='https://drive.google.com/file/d/16R4Innqi2y1RwEpAHBlA0Ae9m4Iml36O/view?usp=sharing')
+          | View
+        br
+        a(href='reviews')
+          | Reviews
+    .groupout
+      h3#bannertext RSVP FOR GROUPOUT
+      img#gad(src='public/resources/imgs/BMGW01.png')
+      form#rsvp(action='rsvp', method='post')
+        label Name
+        br
+        input(type='text', name='bmer', required)
+        br
+        label Email
+        br
+        input(type='email', name='email', required)
+        br
+        label Instagram 
+        br
+        input(type='text', name='insta')
+        br
+        button(type='submit') RSVP
+    .Catalog
+      #apparelTitle
+        h1 Apparel
+      .leftCatalog
+        img.item(src='public/resources/imgs/apparel/BMPS-Drop003-001.jpg')
+        a(href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=UUFU4FVS9RAHL')
+        form.buynow(action='https://www.paypal.com/cgi-bin/webscr', method='post', target='_top')
+          input(type='hidden', name='cmd', value='_s-xclick')
+          input#bminput(type='hidden', name='hosted_button_id', value='89YKJKFVMP2E8')
+          table
+            tbody
+              tr
+                td
+                  input(type='hidden', name='on0', value='Size')
+                  | Size
+              tr
+                td
+                  select(name='os0')
+                    option(value='Small') Small 
+                    option(value='Medium') Medium 
+                    option(value='Large') Large 
+          input(type='image', src='https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif', border='0', name='submit', alt='PayPal - The safer, easier way to pay online!')
+          img(alt='', border='0', src='https://www.paypalobjects.com/en_US/i/scr/pixel.gif', width='1', height='1')
+        img.item(src='public/resources/imgs/apparel/BMPS-Drop003-002.jpg')
+        form.buynow(action='https://www.paypal.com/cgi-bin/webscr', method='post', target='_top')
+          input(type='hidden', name='cmd', value='_s-xclick')
+          input(type='hidden', name='hosted_button_id', value='ST4M33WWARWSU')
+          table
+            tbody
+              tr
+                td
+                  input#bminput(type='hidden', name='on0', value='Size')
+                  | Size
+              tr
+                td
+                  select(name='os0')
+                    option(value='Small') Small 
+                    option(value='Medium') Medium 
+                    option(value='Large') Large 
+          input(type='image', src='https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif', border='0', name='submit', alt='PayPal - The safer, easier way to pay online!')
+          img(alt='', border='0', src='https://www.paypalobjects.com/en_US/i/scr/pixel.gif', width='1', height='1')
+        img.item(src='public/resources/imgs/apparel/BMPS-Drop003-004.jpg')
+        form.buynow(action='https://www.paypal.com/cgi-bin/webscr', method='post', target='_top')
+          input(type='hidden', name='cmd', value='_s-xclick')
+          input(type='hidden', name='hosted_button_id', value='6PX8N8AWK9932')
+          table
+            tbody
+              tr
+                td
+                  input#bminput(type='hidden', name='on0', value='Size')
+                  | Size
+              tr
+                td
+                  select(name='os0')
+                    option(value='Small') Small 
+                    option(value='Medium') Medium 
+                    option(value='Large') Large 
+          input(type='image', src='https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif', border='0', name='submit', alt='PayPal - The safer, easier way to pay online!')
+          img(alt='', border='0', src='https://www.paypalobjects.com/en_US/i/scr/pixel.gif', width='1', height='1')
+      .rightCatalog
+        img.item(src='public/resources/imgs/apparel/BMPS-Drop003-006.jpg')
+        form.buynow(action='https://www.paypal.com/cgi-bin/webscr', method='post', target='_top')
+          input(type='hidden', name='cmd', value='_s-xclick')
+          input(type='hidden', name='hosted_button_id', value='ST4M33WWARWSU')
+          table
+            tbody
+              tr
+                td
+                  input#bminput(type='hidden', name='on0', value='Size')
+                  | Size
+              tr
+                td
+                  select(name='os0')
+                    option(value='Small') Small 
+                    option(value='Medium') Medium 
+                    option(value='Large') Large 
+          input(type='image', src='https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif', border='0', name='submit', alt='PayPal - The safer, easier way to pay online!')
+          img(alt='', border='0', src='https://www.paypalobjects.com/en_US/i/scr/pixel.gif', width='1', height='1')
+        img.item(src='public/resources/imgs/apparel/BMPS-Drop003-007.jpg')
+        form.buynow(action='https://www.paypal.com/cgi-bin/webscr', method='post', target='_top')
+          input(type='hidden', name='cmd', value='_s-xclick')
+          input(type='hidden', name='hosted_button_id', value='2CYUEH9QKZ4Z4')
+          table
+            tbody
+              tr
+                td
+                  input#bminput(type='hidden', name='on0', value='Size')
+                  | Size
+              tr
+                td
+                  select(name='os0')
+                    option(value='Small') Small 
+                    option(value='Medium') Medium 
+                    option(value='Large') Large 
+          input(type='image', src='https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif', border='0', name='submit', alt='PayPal - The safer, easier way to pay online!')
+          img(alt='', border='0', src='https://www.paypalobjects.com/en_US/i/scr/pixel.gif', width='1', height='1')
+      .lessons
+      iframe(src='https://www.youtube.com/embed/2DMjFMXbVSA', frameborder='0', allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture', allowfullscreen='')
+      iframe( src='https://www.youtube.com/embed/8pNhU1B4Rj4', frameborder='0', allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture', allowfullscreen='')
+      iframe(src='https://www.youtube.com/embed/iyXCCrUWOjc', frameborder='0', allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture', allowfullscreen='')
+      iframe(src='https://www.youtube.com/embed/hU9AjpiZ2Yo', frameborder='0', allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture', allowfullscreen='')
