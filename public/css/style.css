@@ -26,6 +26,15 @@ groupout styling
     color: white;
     font-size: 40px;
 }
+.groupout textarea {
+    width: 80vw;
+    background-color: transparent;
+    border: solid 1px white;
+    border-radius: 20px;
+    height: 10vh;
+    color: white;
+    font-size: 40px;
+}
 .groupout button {
     width: 15vw;
     height: 5vh;

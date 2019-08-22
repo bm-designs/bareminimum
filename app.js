@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+var nodemailer = require('nodemailer');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var util = require('util');
@@ -65,6 +66,52 @@ app.get('/reviews', function(req, res){
 		});
 
 	});
+})
+app.post('/rsvp', function(req,res){
+	var data = req.body
+	console.log(data)
+	var bmer = data.bmer;
+	var email = data.email;
+	if (data.insta) {
+		var insta = data.insta;
+	} else {
+		var insta = ''
+	}
+	if (data.bio) {
+		var bio = data.bio;
+	} else {
+		var bio = '';
+	}
+	var values = [bmer,email, insta, bio]
+	var query = "INSERT INTO rsvp (bmer, email, insta, bio) VALUES($1,$2,$3,$4)"
+	// client.query(query,values, function(err,result){
+	// 	if (err){
+	// 		console.log(err)
+	// 		res.render("home")
+	// 	}
+	// 	console.log(bmer+" "+"RSVP'd")
+ // 	})
+ 	var transporter = nodemailer.createTransport({
+  		service: 'Zoho',
+  		auth: {
+    		user: 'james@bareminimum.site',
+    		pass: 'NE_patriots12'
+  		}
+	});
+	var mailOptions = {
+  		from: 'james@bareminimum.site',
+  		to: 'james@bareminimum.site',
+  		subject: 'New Groupout Client: '+bmer,
+  		html: '<h3>Name:</h3><p>'+bmer+'</p><br><h3>Email:</h3><p>'+email+'</p><h3>Insta:</h3><p>'+insta+'</p><h3>Bio</h3><p>'+bio,
+	}
+	transporter.sendMail(mailOptions, function(error, info){
+  		if (error) {
+    		console.log(error);
+  		} else {
+    		console.log('Email sent: ' + info.response);
+  			}
+		})
+ 	res.render("home")
 })
 
 app.get('/guides', function(req, res) {
