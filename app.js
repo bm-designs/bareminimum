@@ -84,13 +84,13 @@ app.post('/rsvp', function(req,res){
 	}
 	var values = [bmer,email, insta, bio]
 	var query = "INSERT INTO rsvp (bmer, email, insta, bio) VALUES($1,$2,$3,$4)"
-	// client.query(query,values, function(err,result){
-	// 	if (err){
-	// 		console.log(err)
-	// 		res.render("home")
-	// 	}
-	// 	console.log(bmer+" "+"RSVP'd")
- // 	})
+	client.query(query,values, function(err,result){
+		if (err){
+			console.log(err)
+			res.render("home")
+		}
+		console.log(bmer+" "+"RSVP'd")
+ 	})
  	var transporter = nodemailer.createTransport({
   		service: 'Zoho',
   		auth: {
@@ -104,6 +104,12 @@ app.post('/rsvp', function(req,res){
   		subject: 'New Groupout Client: '+bmer,
   		html: '<h3>Name:</h3><p>'+bmer+'</p><br><h3>Email:</h3><p>'+email+'</p><h3>Insta:</h3><p>'+insta+'</p><h3>Bio</h3><p>'+bio,
 	}
+	var rsvpConfirmation = {
+		from: 'james@bareminimum.site',
+		to: email,
+		subject: 'BM Groupout RSVP Confirmation',
+		html: '<h1>Groupout Every Saturday 10am @ College ave & Parker st Berkeley Ca</h1><h3>Thank you for your RSVP!</h3><br><p>You can reach out to this email directly or contact Bare Minimum through Instagram for more information on the event</p><br><h3>Interested in Personal Training?</h3><br><p>Sessions are only $25! Email james@bareminimum.site for bookings</p><h2>Serious Inquiries Only</h2>'
+	}
 	transporter.sendMail(mailOptions, function(error, info){
   		if (error) {
     		console.log(error);
@@ -111,6 +117,13 @@ app.post('/rsvp', function(req,res){
     		console.log('Email sent: ' + info.response);
   			}
 		})
+	transporter.sendMail(rsvpConfirmation, function(error, info){
+		if (error){
+			console.log(error)
+		} else {
+			console.log('Email sent: ' + info.response)
+		}
+	})
  	res.render("home")
 })
 
