@@ -1,0 +1,34 @@
+.wrapper {
+	width:100vw;
+	text-align: center;
+	display: inline-flex;
+
+}
+p {
+	font-size: 30px;
+}
+h2 {
+	font-size: 40px;
+}
+.myworkouts {
+	width: 46vw;
+	margin-left:2vw;
+	float: left;
+
+}
+.groupouts {
+	width: 46vw;
+	margin: 0;
+	margin-left:2vw;
+}
+#muscle {
+	width: 25vw;
+}
+table {
+	text-align: left;
+	border: solid white 2px;
+	padding: 1%;
+}
+td {
+	width: 20vw;
+}

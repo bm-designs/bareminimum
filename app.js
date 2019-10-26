@@ -53,6 +53,9 @@ app.get('/', function(req, res) {
 	});
 	
 });
+app.get("/workouts", function(req,res){
+	res.render('workout')
+});
 app.get('/reviews', function(req, res){
 	client.query('SELECT * FROM guidereviews', (err, result) =>{
 		if (err) throw err;

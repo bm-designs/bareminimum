@@ -1,0 +1,44 @@
+doctype html
+html(lang='en')
+	head
+		meta(charset='utf-8')
+		title BM Functional Fitness
+		meta(name='Bare Minimum', content='Exercise Education')
+		meta(name='James Laskey', content='SitePoint')
+		link(rel='stylesheet', type='text/css', href='public/css/workout.css', charset='utf-8')
+		link(rel='stylesheet', type='text/css', href='public/css/style.css', charset='utf-8')
+		script(src="https://code.jquery.com/jquery-3.4.1.min.js")
+		script(src='public/controllers/js/script.js')
+	body
+		.navbar
+			a(href='/workouts')
+				img(src='public/resources/imgs/workouticon.png')
+		.wrapper
+			.myworkouts
+				h2 @perflexional Workouts
+				table
+					tr
+						td
+							p
+							|	Bench Press
+						td(id='muscle')
+							p
+							| Muscle Group : Chest, Triceps
+					tr
+						td
+							p
+							| Squats
+						td(id='muscle')
+							p
+							| Muscle Groups : Legs, Core
+			.groupouts
+				h2 Groupout Weekly Workout
+				table
+					tr
+						td
+							p
+							|	Pushups
+						td(id='muscle')
+							p
+							| Muscle Group : Core, Chest, Triceps
+
